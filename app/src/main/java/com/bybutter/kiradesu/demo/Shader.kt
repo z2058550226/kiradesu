@@ -60,6 +60,8 @@ abstract class Shader(
             return
         }
 
+        Log.e("SUIKA", "program compile success")
+
         this.program = program
     }
 

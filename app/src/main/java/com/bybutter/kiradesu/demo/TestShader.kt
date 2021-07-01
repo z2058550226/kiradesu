@@ -55,6 +55,9 @@ class TestShader : Shader(
     }
 
     override fun onDraw() {
+        use()
 
     }
+
+    var textureId = -1
 }

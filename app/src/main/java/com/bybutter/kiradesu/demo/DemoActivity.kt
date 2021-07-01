@@ -1,13 +1,15 @@
 package com.bybutter.kiradesu.demo
 
+import android.opengl.GLES20.*
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.doOnLayout
 import com.bybutter.kiradesu.util.Camera2Loader
+import com.bybutter.kiradesu.util.doOnLayout
 
 class DemoActivity : AppCompatActivity() {
     private val glSurfaceView by lazy { GLSurfaceView(this) }
+
     private val cameraLoader by lazy { Camera2Loader(this) }
     private val demoRender by lazy { DemoRender(glSurfaceView) }
 
@@ -20,9 +22,9 @@ class DemoActivity : AppCompatActivity() {
         glSurfaceView.renderMode = GLSurfaceView.RENDERMODE_WHEN_DIRTY
 
         cameraLoader.setOnPreviewFrameListener { data, width, height ->
-            demoRender.updateFrame(data,width, height)
+            demoRender.updateFrame(data, width, height)
         }
-//        glSurfaceView.requestRender()
+        glSurfaceView.requestRender()
     }
 
     override fun onResume() {

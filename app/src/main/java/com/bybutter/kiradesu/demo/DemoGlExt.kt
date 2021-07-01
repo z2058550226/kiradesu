@@ -1,7 +1,11 @@
 package com.bybutter.kiradesu.demo
 
+import android.content.Context
+import android.content.res.Resources
 import android.opengl.GLES20.*
 import android.util.Log
+import androidx.annotation.IdRes
+import androidx.annotation.RawRes
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -25,6 +29,12 @@ inline fun vertexAttributeF(
     glEnableVertexAttribArray(attribute)
     block()
     glDisableVertexAttribArray(attribute)
+}
+
+fun Context.createProgram(@RawRes vsSourceId: Int, @RawRes fragSourceId: Int): Int {
+    val vs = resources.openRawResource(vsSourceId).bufferedReader(Charsets.UTF_8).readText()
+    val frag = resources.openRawResource(fragSourceId).bufferedReader(Charsets.UTF_8).readText()
+    return createProgram(vs, frag)
 }
 
 fun createProgram(vertexShaderSource: String, fragmentShaderSource: String): Int {

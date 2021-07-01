@@ -24,7 +24,7 @@ class GITestFilter : GPUImageFilter(
 ) {
     private val demo = GPUImageFalseColorFilter()
 
-    override fun onDraw(textureId: Int, cubeBuffer: FloatBuffer?, textureBuffer: FloatBuffer?) {
+    override fun onDraw(textureId: Int, cubeBuffer: FloatBuffer, textureBuffer: FloatBuffer) {
         super.onDraw(textureId, cubeBuffer, textureBuffer)
 
     }

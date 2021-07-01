@@ -102,7 +102,7 @@ class GIStarFilterOri : GPUImageFilter(
             if (glGetError3 != 0) {
                 Log.e("GLES", "3 glGetError: 0x" + Integer.toHexString(glGetError3))
             }
-            GLES20.glDrawArrays(5, 0, 4)
+            GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4)
             GLES20.glDisableVertexAttribArray(attribPosition)
             GLES20.glDisableVertexAttribArray(attribTextureCoordinate)
             if (starCount > 0) {
